@@ -93,49 +93,6 @@ void IMAGESET::autoSeg()
 	grabCut("test");
 }
 
-
-//void IMAGESET::autoSeg()
-//{
-//	cv::RNG rng(12345);
-//
-//	cv::Mat grayImg, thresh;
-//	vector<vector<cv::Point>> contours;
-//	vector<cv::Point> cnt;
-//	vector<cv::Vec4i> hierarchy;
-//	cv::cvtColor(foreImg,grayImg,cv::COLOR_BGR2GRAY);
-//
-//	Canny( grayImg, thresh, 100, 100*2, 3 );
-//	//cv::threshold(grayImg,thresh,127,255,0);
-//	cv::findContours(thresh,contours,hierarchy,cv::RETR_LIST,cv::CHAIN_APPROX_SIMPLE);
-//	
-//	vector<vector<cv::Point>> contours_poly(contours.size());
-//	vector<cv::Rect> boundRect(contours.size());
-//	vector<cv::Point2f> center(contours.size());
-//	vector<float> radius(contours.size());
-//
-//	multimap<double,int> contourMap;
-//	for(int i=0;i<contours.size();++i)
-//	{
-//		cv::approxPolyDP(cv::Mat(contours[i]),contours_poly[i],3,true);
-//		boundRect[i]=cv::boundingRect(cv::Mat(contours[i]));
-//		cv::minEnclosingCircle((cv::Mat)contours[i],center[i],radius[i]);
-//		
-//		contourMap.insert(multimap<double,int>::value_type(radius[i],i));
-//	}
-//	
-//	//choice is just two: marging several rectangle or using mask instead of rect
-//	multimap<double,int>::iterator it=contourMap.end();
-//	it--;
-//	it--;
-//	cv::drawContours(mask,contours,it->second,cv::Scalar(cv::GC_FGD),CV_FILLED,8,hierarchy);
-//	it--;
-//	cv::drawContours(mask,contours,it->second,cv::Scalar(cv::GC_FGD),CV_FILLED,8,hierarchy);
-//	it--;
-//	cv::drawContours(mask,contours,it->second,cv::Scalar(cv::GC_FGD),CV_FILLED,8,hierarchy);
-//
-//	grabCut("test");
-//}
-
 void IMAGESET::drawing(const string &windowName,cv::Mat &_foreImg,cv::Mat &_mask)
 {
     cv::Mat scribbled_src = _foreImg.clone();
