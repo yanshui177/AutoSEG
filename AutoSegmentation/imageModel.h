@@ -44,6 +44,7 @@ public:
 	void autoSeg();
 	void saveImage(const string &file);
 	void drawing(const string &windowName,cv::Mat &_foreImg,cv::Mat &_mask);
+	void grabCut(const string &windowName,const cv::Rect &rect);
 	void grabCut(const string &windowName);
 	void removeIsolation();
 
